@@ -18,7 +18,8 @@
             <label for="description">Description:</label><br>
             <textarea id="description" name="description" rows="4" cols="50" required></textarea><br><br>
             <input type="submit" value="Create Event">
-            <button type="button" onclick="history.back()">Back to Dashboard</button>
+            <button type="button" id="eventsButton">Events</button>
+            <button type="button" onclick="goToDashboard()">Back to Dashboard</button>
         </form>
     </div>
     <script type="module">
@@ -72,6 +73,14 @@
 
         function goToDashboard() {
             window.location.href = "dashboard.html";
+        }
+
+        document.getElementById("eventsButton").addEventListener("click", function() {
+            goToEvents();
+        });
+
+        function goToEvents() {
+            window.location.href = "events.html";
         }
     
      </script>

@@ -42,13 +42,26 @@ onValue(studentsRef, (snapshot) => {
                 <td>${student.section}</td>
                 <td>${student.username}</td>
                 <td>
+                    <button class="editBtn" data-id="${key}">Edit</button>
                     <input type="checkbox" name="selectedStudents" value="${key}">
                 </td>
             `;
             studentTableBody.appendChild(studentRow);
         }
     }
+
+    // Add event listeners to edit buttons
+    const editButtons = document.querySelectorAll('.editBtn');
+    editButtons.forEach(button => {
+        button.addEventListener('click', handleEdit);
+    });
 });
+
+// Function to handle edit button click
+function handleEdit(event) {
+    const studentId = event.target.getAttribute('data-id');
+    // You can navigate to the edit page or implement inline editing as per your requirements
+}
 
 // Function to navigate to the dashboard
 function goToDashboard() {
@@ -81,3 +94,4 @@ document.getElementById('deleteSelectedBtn').addEventListener('click', function(
         });
     }
 });
+

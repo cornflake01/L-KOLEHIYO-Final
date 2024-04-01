@@ -5,34 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Grades</title>
     <!-- Bootstrap CSS -->
-    <link
+    <!-- <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
+    /> -->
+    <!-- BOOTSTRAP LATEST VERSION 5.3 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
     />
+
+    <link rel="stylesheet" href="sweetalert2.min.css" />
 
     <!-- Bootstrap JS and jQuery (optional for Bootstrap features) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+
+    <!-- BOOTSTRAP LATEST VERSION 5.3 -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="container">
-      <div class="row justify-content-center">Upload csv</div>
-      <div>
-        <input type="file" accept=".csv" id="picker" />
-        <button class="btn btn-primary" id="upload-btn">Upload</button>
+      <div class="row justify-content-center fs-4">
+        Upload grades per subject
       </div>
-      <table id="grades-table" class="table">
-        <thead>
-          <tr>
-            <th scope="col">LRN</th>
-            <th scope="col">Student name</th>
-            <th scope="col">Midterm grade</th>
-            <th scope="col">Final grade</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+
+      <div class="d-flex flex-column gap-2 mt-3">
+        <div class="d-flex align-items-center gap-2">
+          <select
+            id="grade-level-select"
+            class="form-select"
+            aria-label="GRADE LEVEL"
+          >
+            <option selected>GRADE LEVEL</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+          </select>
+          <select id="strand-select" class="form-select" aria-label="STRAND">
+            <option selected>STRAND</option>
+            <option value="STEM">STEM</option>
+            <option value="ICT">ICT</option>
+            <option value="ABM">ABM</option>
+            <option value="HUMSS">HUMSS</option>
+          </select>
+          <select id="section-select" class="form-select" aria-label="SECTION">
+            <option selected>SECTION</option>
+            <option value="St. Dominic">St. Dominic</option>
+          </select>
+        </div>
+
+        <select id="subject-select" class="form-select" aria-label="SUBJECT">
+          <option>SUBJECT</option>
+        </select>
+
+        <div class="d-flex align-items-center gap-2">
+          <select
+            id="semester-select"
+            class="form-select"
+            aria-label="SEMESTER"
+          >
+            <option selected>SEMESTER</option>
+            <option value="1">1st Semester</option>
+            <option value="2">2nd Semester</option>
+          </select>
+
+          <select id="quarter-select" class="form-select" aria-label="Quarter">
+            <option selected>Quarter</option>
+            <option value="MIDTERM">MIDTERM</option>
+            <option value="FINALS">FINALS</option>
+          </select>
+        </div>
+
+        <input type="file" accept=".csv" id="fileUpload" />
+        <button class="btn btn-primary" id="upload-btn" disabled>Upload</button>
+      </div>
     </div>
 
     <script type="module" src="./uploadgrades.js"></script>

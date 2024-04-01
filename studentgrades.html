@@ -16,10 +16,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="row justify-content-center">Your grades</div>
-      <table id="grades-table" class="table"></table>
-    </div>
+    <main class="container-fluid d-flex flex-column align-items-center gap-4">
+      <div class="container">
+        <div class="row justify-content-center gap-2">
+          <h3>First Semester</h3>
+        </div>
+        <p>MIDTERM</p>
+        <table
+          id="grades-table-firstSem-midterm"
+          class="table text-center"
+        ></table>
+        <p>FINALS</p>
+        <table
+          id="grades-table-firstSem-finals"
+          class="table text-center"
+        ></table>
+      </div>
+      <div class="container">
+        <div class="row justify-content-center gap-2">
+          <h3>Second Semester</h3>
+        </div>
+        <p>MIDTERM</p>
+        <table
+          id="grades-table-secondSem-midterm"
+          class="table text-center"
+        ></table>
+        <p>FINALS</p>
+        <table
+          id="grades-table-secondSem-finals"
+          class="table text-center"
+        ></table>
+      </div>
+    </main>
 
     <script type="module" src="./studentgrades.js"></script>
   </body>
