@@ -1,145 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
     <!-- Bootstrap CSS -->
-    <link
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <style>
-      body {
-        background-color: #002145;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        height: 100vh;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .login-container {
-        max-width: 400px;
-        padding: 30px;
-        border-radius: 10px;
-        background-color: #f8f9fa;
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-      }
-      .login-container h2 {
-        margin-bottom: 30px;
-        text-align: center;
-        color: #002145;
-      }
-      .form-control {
-        border-radius: 20px;
-        padding: 5px;
-      }
-      .login-button {
-        border-radius: 20px;
-        padding: 10px;
-        background-color: #002145;
-        border: none;
-        color: #fff;
-      }
-      .login-button:hover {
-        background-color: #00172a;
-      }
-      .logo {
-        display: block;
-        margin: auto;
-        margin-bottom: 20px;
-        width: 150px;
-        height: auto;
-      }
-      .login-type-label {
-        font-size: 14px;
-        color: #002145;
-      }
-      .login-options {
-        margin-top: 20px;
-      }
+        body {
+            background-color: #002145;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            max-width: 400px;
+            padding: 30px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+        .login-container h2 {
+            margin-bottom: 30px;
+            text-align: center;
+            color: #002145;
+        }
+        .form-control {
+            border-radius: 20px;
+            padding: 5px;
+        }
+        .login-button {
+            border-radius: 20px;
+            padding: 10px;
+            background-color: #002145;
+            border: none;
+            color: #fff;
+        }
+        .login-button:hover {
+            background-color: #00172a;
+        }
+        .logo {
+            display: block;
+            margin: auto;
+            margin-bottom: 20px;
+            width: 150px;
+            height: auto;
+        }
+        .login-type-label {
+            font-size: 14px;
+            color: #002145;
+        }
+        .login-options {
+            margin-top: 20px;
+        }
     </style>
-
-    <!-- Bootstrap JS and jQuery (optional for Bootstrap features) -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-    <script>
-      // // Function to handle login
-      // function login() {
-      //   const username = document.getElementById("username").value;
-      //   const password = document.getElementById("password").value;
-      //   const userType = document.getElementById("user-type").value;
-
-      //   // Check if username and password are correct for admin or student
-      //   if (
-      //     (userType === "admin" &&
-      //       username === "admin" &&
-      //       password === "admin") ||
-      //     (userType === "student" &&
-      //       username === "student" &&
-      //       password === "student")
-      //   ) {
-      //     // Redirect to corresponding dashboard
-      //     if (userType === "admin") {
-      //       window.location.href = "dashboard.html";
-      //     } else {
-      //       window.location.href = "studentdashboard.html";
-      //     }
-      //   } else {
-      //     // Display error message if login credentials are incorrect
-      //     alert("Invalid username or password");
-      //   }
-      // }
-    </script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row justify-content-center">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
         <div class="col-lg-6">
-          <div class="login-container">
-            <img src="./img/logo.jpg" alt="letran-logo" class="logo" />
-            <h2>Welcome Back!</h2>
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control"
-                id="email"
-                placeholder="Email"
-                required
-              />
+            <div class="login-container">
+                <img src="./img/logo.jpg" alt="letran-logo" class="logo" />
+                <h2>Welcome Back!</h2>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="email" placeholder="Email" required />
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Password" required />
+                </div>
+                <div class="form-group login-options">
+                    <label class="login-type-label" for="user-type">Login as:</label>
+                    <select class="form-control" id="user-type">
+                        <option value="student">Student</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <button id="login-btn" type="button" class="btn btn-block btn-primary login-button">
+                    Login
+                </button>
             </div>
-            <div class="form-group">
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="Password"
-                required
-              />
-            </div>
-            <div class="form-group login-options">
-              <label class="login-type-label" for="user-type">Login as:</label>
-              <select class="form-control" id="user-type">
-                <option value="student">Student</option>
-                <option value="admin">Admin</option>
-              </select>
-            </div>
-            <button
-              id="login-btn"
-              type="button"
-              onclick="login()"
-              class="btn btn-block btn-primary login-button"
-            >
-              Login
-            </button>
-          </div>
         </div>
-      </div>
     </div>
+</div>
 
-    <script type="module" src="./login.js"></script>
-  </body>
+<!-- Bootstrap JS and jQuery (optional for Bootstrap features) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+document.getElementById("login-btn").onclick = () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const userType = document.getElementById("user-type").value;
+
+    // Placeholder for actual login validation logic
+    // For demonstration purposes, I'm assuming all logins are successful
+
+    // Redirect to corresponding dashboard
+    if (userType === "admin") {
+        // Redirect to admin dashboard
+        window.location.href = "dashboard.html";
+    } else if (userType === "student") {
+        // Redirect to student dashboard
+        window.location.href = "studentdashboard.html";
+    }
+};
+</script>
+
+</body>
 </html>

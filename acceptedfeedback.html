@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L-KOLEHIYO Accepted Feedbacks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous"/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #002145;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #002145;
+            margin-top: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #002145;
+        }
+
+        th:first-child,
+        td:first-child {
+            width: 20%;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2),
+        th:nth-child(3),
+        td:nth-child(3),
+        th:nth-child(4),
+        td:nth-child(4) {
+            width: 20%;
+        }
+
+        th:nth-child(5),
+        td:nth-child(5) {
+            width: 20%;
+        }
+
+        script {
+            margin-top: 20px;
+        }
+
+        .back-btn {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-btn input[type="button"] {
+            background-color: #002145;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+        }
+
+        .back-btn input[type="button"]:hover {
+            background-color: #00172a;
+        }
+    </style>
+</head>
+<body>
+<h1>L-KOLEHIYO Accepted Feedbacks</h1>
+<table id="acceptedFeedbackTable">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Rating</th>
+        <th>Description</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Table rows will be inserted here dynamically -->
+    </tbody>
+</table>
+
+<script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database-compat.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const firebaseConfig = {
+            apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
+            authDomain: "l-kolehiyo-capstone.firebaseapp.com",
+            databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
+            projectId: "l-kolehiyo-capstone",
+            storageBucket: "l-kolehiyo-capstone.appspot.com",
+            messagingSenderId: "1032233320347",
+            appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
+            measurementId: "G-D5R84EF8KY"
+        };
+
+        // Initialize Firebase
+        const firebaseApp = firebase.initializeApp(firebaseConfig);
+        const database = firebaseApp.database();
+
+        const acceptedFeedbackTable = document.getElementById('acceptedFeedbackTable').getElementsByTagName('tbody')[0];
+
+        database.ref('accepted_feedbacks').once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                const childData = childSnapshot.val();
+                const row = acceptedFeedbackTable.insertRow();
+                row.insertCell(0).textContent = childData.name || '';
+                row.insertCell(1).textContent = childData.email || '';
+                row.insertCell(2).textContent = childData.rating || '';
+                row.insertCell(3).textContent = childData.description || '';
+                row.insertCell(4).textContent = childData.date ? new Date(childData.date).toLocaleString() : '';
+            });
+        });
+    });
+
+    // Function to print the feedback table
+    function printTable() {
+        window.print();
+    }
+</script>
+
+<div class="back-btn">
+    <input type="button" value="Feedback Requests" onclick="window.location.href = 'feedbacks.html'">
+    <input type="button" value="Back to Dashboard" onclick="window.location.href = 'dashboard.html'">
+    <input type="button" value="Print" onclick="printTable()">
+</div>
+
+</body>
+</html>

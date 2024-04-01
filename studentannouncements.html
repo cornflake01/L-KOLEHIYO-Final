@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Announcements</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-title {
+            color: #002145;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .announcement-feed {
+            margin-top: 20px;
+        }
+
+        .announcement-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-title {
+            font-weight: bold;
+            color: #002145;
+            margin-bottom: 5px;
+        }
+
+        .announcement-date {
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .announcement-description {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="announcement-title">L-KOLEHIYO Announcements</h1>
+
+    <div class="announcement-feed" id="announcementFeed">
+        <!-- Announcement cards will be dynamically inserted here -->
+    </div>
+</div>
+
+<!-- Firebase JavaScript SDK -->
+<script type="module">
+    // Import the necessary Firebase modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.0/firebase-database.js";
+
+    // Your Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
+        authDomain: "l-kolehiyo-capstone.firebaseapp.com",
+        databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
+        projectId: "l-kolehiyo-capstone",
+        storageBucket: "l-kolehiyo-capstone.appspot.com",
+        messagingSenderId: "1032233320347",
+        appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
+        measurementId: "G-D5R84EF8KY"
+    };
+
+    // Initialize Firebase
+    const firebaseApp = initializeApp(firebaseConfig);
+    const database = getDatabase(firebaseApp);
+
+    // Reference to the announcements node
+    const announcementsRef = ref(database, 'announcements');
+
+    // Function to display announcements
+    function displayAnnouncements(data) {
+        const announcements = data.val();
+        const announcementFeed = document.getElementById('announcementFeed');
+
+        // Clear existing content
+        announcementFeed.innerHTML = '';
+
+        for (let key in announcements) {
+            const announcement = announcements[key];
+            const announcementCard = document.createElement('div');
+            announcementCard.classList.add('announcement-card');
+
+            const titleElement = document.createElement('h3');
+            titleElement.classList.add('announcement-title');
+            titleElement.textContent = announcement.title;
+
+            const dateElement = document.createElement('p');
+            dateElement.classList.add('announcement-date');
+            dateElement.textContent = announcement.date;
+
+            const descriptionElement = document.createElement('p');
+            descriptionElement.classList.add('announcement-description');
+            descriptionElement.textContent = announcement.description;
+
+            announcementCard.appendChild(titleElement);
+            announcementCard.appendChild(dateElement);
+            announcementCard.appendChild(descriptionElement);
+
+            announcementFeed.appendChild(announcementCard);
+        }
+    }
+
+    // Listen for changes in the announcements data
+    onValue(announcementsRef, displayAnnouncements);
+</script>
+</body>
+</html>
