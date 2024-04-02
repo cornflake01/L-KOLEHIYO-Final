@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Grades</title>
@@ -16,7 +16,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-
+    <script src="https://kit.fontawesome.com/e410dd328b.js" crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="sweetalert2.min.css" />
 
     <!-- Bootstrap JS and jQuery (optional for Bootstrap features) -->
@@ -35,61 +36,180 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row justify-content-center fs-4">
-       L-KOLEHIYO Student Grade Upload
-      </div>
+    <style>
+        /* Your existing CSS styles */
+        /* Side menu styles */
+        .side-menu {
+            background-color: #002145;
+            color: #fff;
+            height: 100vh;
+            width: 20%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            z-index: 1000; /* Ensure the side menu is above other content */
+        }
 
-      <div class="d-flex flex-column gap-2 mt-3">
-        <div class="d-flex align-items-center gap-2">
-          <select
-            id="grade-level-select"
-            class="form-select"
-            aria-label="GRADE LEVEL"
-          >
-            <option selected>GRADE LEVEL</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-          </select>
-          <select id="strand-select" class="form-select" aria-label="STRAND">
-            <option selected>STRAND</option>
-            <option value="STEM">STEM</option>
-            <option value="ICT">ICT</option>
-            <option value="ABM">ABM</option>
-            <option value="HUMSS">HUMSS</option>
-          </select>
-          <select id="section-select" class="form-select" aria-label="SECTION">
-            <option selected>SECTION</option>
-            <option value="St. Dominic">St. Dominic</option>
-          </select>
+        .side-menu:hover {
+            width: 20%;
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid transparent;
+            transition: width 0.3s, border-bottom 0.3s;
+        }
+
+        .school-info:hover {
+            width: 100%;
+            border-bottom: 2px solid #fff;
+        }
+
+        .school-info h1 {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .logo {
+            width: 80px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul li {
+            flex-grow: 1;
+        }
+
+        ul li a {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            background-color: #003669;
+        }
+
+        ul li a i {
+            font-size: 32px;
+            margin-right: 20px;
+        }
+
+        /* Adjustments for main content */
+        .main-content {
+            margin-left: 20%; /* Same width as the side menu */
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="school-info">
+            <img src="./img/maltese_cross.png" alt="letran-logo" class="logo" />
+            <h1>L KOLEHIYO</h1>
+        </div>
+        <ul>
+            <li>
+                <a href="studentinformation.html"><i class="fas fa-id-card"></i> Profile</a>
+            </li>
+            <li>
+                <a href="studentgrades.html"><i class="fas fa-file-upload"></i> Grade Upload</a>
+            </li>
+            <li>
+                <a href="studentevents.html"><i class="fas fa-calendar-alt"></i> School Events</a>
+            </li>
+            <li>
+                <a href="offices.html"><i class="fas fa-map-marker-alt"></i> Office Location</a>
+            </li>
+            <li>
+                <a href="studentfeedbackform.html"><i class="fa fa-comments"></i> Feedback/Concerns</a>
+            </li>
+            <li>
+                <a href="studentannouncements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+            </li>
+            <li>
+                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+      <div class="container">
+        <div class="row justify-content-center fs-4">
+         L-KOLEHIYO Student Grade Upload
         </div>
 
-        <select id="subject-select" class="form-select" aria-label="SUBJECT">
-          <option>SUBJECT</option>
-        </select>
+        <div class="d-flex flex-column gap-2 mt-3">
+          <div class="d-flex align-items-center gap-2">
+            <select
+              id="grade-level-select"
+              class="form-select"
+              aria-label="GRADE LEVEL"
+            >
+              <option selected>GRADE LEVEL</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+            </select>
+            <select id="strand-select" class="form-select" aria-label="STRAND">
+              <option selected>STRAND</option>
+              <option value="STEM">STEM</option>
+              <option value="ICT">ICT</option>
+              <option value="ABM">ABM</option>
+              <option value="HUMSS">HUMSS</option>
+            </select>
+            <select id="section-select" class="form-select" aria-label="SECTION">
+              <option selected>SECTION</option>
+              <option value="St. Dominic">St. Dominic</option>
+            </select>
+          </div>
 
-        <div class="d-flex align-items-center gap-2">
-          <select
-            id="semester-select"
-            class="form-select"
-            aria-label="SEMESTER"
-          >
-            <option selected>SEMESTER</option>
-            <option value="1">1st Semester</option>
-            <option value="2">2nd Semester</option>
+          <select id="subject-select" class="form-select" aria-label="SUBJECT">
+            <option>SUBJECT</option>
           </select>
 
-          <select id="quarter-select" class="form-select" aria-label="Quarter">
-            <option selected>Quarter</option>
-            <option value="MIDTERM">MIDTERM</option>
-            <option value="FINALS">FINALS</option>
-          </select>
+          <div class="d-flex align-items-center gap-2">
+            <select
+              id="semester-select"
+              class="form-select"
+              aria-label="SEMESTER"
+            >
+              <option selected>SEMESTER</option>
+              <option value="1">1st Semester</option>
+              <option value="2">2nd Semester</option>
+            </select>
+
+            <select id="quarter-select" class="form-select" aria-label="Quarter">
+              <option selected>Quarter</option>
+              <option value="MIDTERM">MIDTERM</option>
+              <option value="FINALS">FINALS</option>
+            </select>
+          </div>
+
+          <input type="file" accept=".csv" id="fileUpload" />
+          <button class="btn btn-primary" id="upload-btn" disabled>Upload</button>
         </div>
-
-        <input type="file" accept=".csv" id="fileUpload" />
-        <button class="btn btn-primary" id="upload-btn" disabled>Upload</button>
       </div>
     </div>
 

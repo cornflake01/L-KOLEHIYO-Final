@@ -80,9 +80,85 @@
         .back-btn:hover {
             background-color: #00172a;
         }
+
+        /* Side menu styles */
+        .side-menu {
+            background-color: #002145;
+            color: #fff;
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000; /* Ensure the side menu is above other content */
+        }
+
+        .school-info h1 {
+            margin-left: 10px;
+            font-size: 24px;
+            color: #fff;
+        }
+
+        .logo {
+            width: 80px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        ul li {
+            margin: 0 10px;
+        }
+
+        ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            padding: 10px 20px;
+        }
+
+        ul li a:hover {
+            background-color: #003669;
+        }
     </style>
 </head>
 <body>
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="school-info">
+            <img src="./img/maltese_cross.png" alt="letran-logo" class="logo" />
+            <h1>L KOLEHIYO</h1>
+        </div>
+        <ul>
+            <li>
+                <a href="studentinformation.html"><i class="fas fa-id-card"></i> Profile</a>
+            </li>
+            <li>
+                <a href="studentgrades.html"><i class="fas fa-file-upload"></i> Academic Performance</a>
+            </li>
+            <li>
+                <a href="studentevents.html"><i class="fas fa-calendar-alt"></i> School Events</a>
+            </li>
+            <li>
+                <a href="offices.html"><i class="fas fa-map-marker-alt"></i> Office Location</a>
+            </li>
+            <li>
+                <a href="studentfeedbackform.html"><i class="fa fa-comments"></i> Feedback/Concerns</a>
+            </li>
+            <li>
+                <a href="studentannouncements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+            </li>
+            <li>
+                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
     <div class="container">
         <h2>L-KOLEHIYO Student Information</h2>
         <table id="studentTable">
