@@ -1,0 +1,168 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* Specify Poppins as the primary font */
+    background-image: url('img/bg.jpg'); /* Background image */
+    background-size: cover; /* Cover the entire screen */
+    background-position: center; /* Center the background image */
+    height: 100%;
+    position: relative; /* Ensure positioning context for pseudo-element */
+}
+
+html::after {
+    content: ''; /* Required for pseudo-elements */
+    position: absolute; /* Position the pseudo-element */
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width of the viewport */
+    height: 100%; /* Full height of the viewport */
+    background-color: rgba(0, 0, 0, 0.6); /* Background color with opacity */
+    z-index: -1; /* Place the pseudo-element behind other content */
+}
+
+
+.side-menu {
+    background-color: #002145; /* Main color */
+    color: #fff; /* White text */
+    height: 100vh; /* Full height */
+    width: 20%; /* 25% of the screen */
+    position: fixed; /* Fixed position */
+    top: 0; /* Align to the top */
+    left: 0; /* Align to the left */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    transition: width 0.3s; /* Smooth transition effect */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children vertically */
+    justify-content: flex-start; /* Align items to the top */
+    align-items: flex-start; /* Align items to the left */
+}
+
+.side-menu:hover {
+    width: 20%; /* Expand width on hover */
+}
+
+.school-info {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Align items vertically */
+    padding: 20px; /* Padding for the school info */
+    border-bottom: 2px solid transparent; /* Transparent initial border */
+    transition: width 0.3s, border-bottom 0.3s; /* Smooth transition for border */
+}
+
+.side-menu:hover .school-info {
+    width: 100%; /* Expand width to fill the entire side menu on hover */
+    border-bottom: 2px solid #fff; /* White border on hover */
+}
+
+.school-info h1 {
+    margin-left: 10px; /* Margin for the school name */
+    font-size: 18px; /* Larger font size */
+    color: #fff; /* White text color */
+}
+
+.logo {
+    width: 80px; /* Adjust logo size */
+}
+
+ul {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    flex-grow: 1; /* Expand to fill remaining space */
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Arrange children vertically */
+}
+
+ul li {
+    flex-grow: 1; /* Expand to fill remaining space */
+}
+
+ul li a {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    padding: 30px; /* Padding for each item */
+    color: #fff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth transition effect */
+    font-size: 18px; /* Larger font size */
+}
+
+ul li a:hover {
+    background-color: #003669; /* Darker color on hover */
+}
+
+/* Larger icon size */
+ul li a i {
+    font-size: 32px; /* Larger icon size */
+    margin-right: 20px; /* Margin for icon */
+}
+.container {
+    /* Adjust the width to accommodate the side menu */
+    width: 80%;
+}
+
+.table {
+    /* Adjust the width to fit within the container */
+    width: 100%;
+    /* Add margin to create space between the table and side menu */
+    margin-left: 20%;
+}
+
+/* Adjusting the <p> elements */
+p {
+    margin-left: 20%;
+    margin-right: 20%;
+    font-weight: bold; /* Make the font bold */
+    color: #fff; /* White color */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Apply shadow */
+}
+
+.table-card {
+    background-color: #fff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 20px; /* Padding inside the card */
+    margin-bottom: 20px; /* Spacing between cards */
+}
+
+/* Apply the card style to each table */
+#grades-table-firstSem-midterm,
+#grades-table-firstSem-finals,
+#grades-table-secondSem-midterm,
+#grades-table-secondSem-finals {
+    /* Apply the card style */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 20px; /* Padding inside the card */
+    background-color: #fff; /* White background */
+    margin-bottom: 20px; /* Spacing between cards */
+}
+
+h3 {
+
+    color: #fff; /* White color */
+    font-weight: bold; /* Make the font bold */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Apply shadow */
+    margin-top: 30px;
+}
+
+
+.print-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #fff;
+    color: #000;
+    border: none;
+    border-radius: 20px; /* Adjust border radius to make it smaller */
+    padding: 5px 10px; /* Adjust padding to make it smaller */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    z-index: 9999; /* Ensure button is above other content */
+}
+
+.print-button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}

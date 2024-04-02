@@ -31,20 +31,11 @@ const auth = getAuth();
 
 // Reference to the students in the database
 const studentsRef = ref(db, "students");
-const gradesRef = ref(db, "grades");
 
-onValue(gradesRef, (snapshot) => {
+onValue(studentsRef, (snapshot) => {
   snapshot.forEach((childSnapshot) => {
     console.log(childSnapshot.val());
   });
-  console.log(snapshot);
-});
-
-onValue(studentsRef, (snapshot) => {
-  // snapshot.forEach((childSnapshot) => {
-  //   console.log(childSnapshot.val());
-  // });
-  console.log(snapshot);
 });
 
 onAuthStateChanged(auth, (user) => {
@@ -57,10 +48,10 @@ onAuthStateChanged(auth, (user) => {
             renderStudentInfo(childSnapshot.val());
           }
         });
-      },
-      {
-        onlyOnce: true, // This ensures that the listener is only triggered once
       }
+      // {
+      //   onlyOnce: true, // This ensures that the listener is only triggered once
+      // }
     );
 
     console.log("User is logged in:", user.email);

@@ -1,67 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <title>Glass morphism Profile Card</title>
+    <title>My Profile</title>
     <link rel="stylesheet" href="studentinformation.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
-  <body>
-    <section>
-      <div class="card1">
-        <div class="card">
-          <div class="right-container">
-            <h3 class="gradienttext">Profile Details</h3>
-            <table id="studentinformation-table">
-              <tr>
-                <td>Name :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>LRN :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Email :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Strand :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Grade Level :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Section :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Username :</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Password :</td>
-                <td></td>
-              </tr>
-            </table>
-          </div>
+    <script src="https://kit.fontawesome.com/e410dd328b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Your existing CSS styles */
+        body {
+            background-image: url('img/bg.jpg'); /* Background image */
+            background-color: #002145;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: linear-gradient(to right, #000, #002145);
+            margin: 0; /* Remove default margin */
+        }
+
+        section {
+            height: 90vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 30px;
+            padding: 10px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+            width: 700px;
+            height: 500px;
+            background-color: rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .right-container {
+            flex: 1;
+            height: 430px;
+            padding: 10px;
+            border-radius: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .gradienttext {
+            background-image: linear-gradient(to right, #FFFFFF 0%, #FFFFFF 100%);
+            color: transparent;
+            -webkit-background-clip: text;
+            text-align: center;
+        }
+
+        table {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 280px;
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        td {
+            text-align: center;
+            padding: 10px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+        }
+
+        form input[type="button"] {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        form input[type="button"]:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Side menu styles */
+        .side-menu {
+            background-color: #002145;
+            color: #fff;
+            height: 100vh;
+            width: 20%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            z-index: 1000; /* Ensure the side menu is above other content */
+        }
+
+        .side-menu:hover {
+            width: 20%;
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid transparent;
+            transition: width 0.3s, border-bottom 0.3s;
+        }
+
+        .school-info:hover {
+            width: 100%;
+            border-bottom: 2px solid #fff;
+        }
+
+        .school-info h1 {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .logo {
+            width: 80px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul li {
+            flex-grow: 1;
+        }
+
+        ul li a {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            background-color: #003669;
+        }
+
+        ul li a i {
+            font-size: 32px;
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="school-info">
+            <img src="./img/maltese_cross.png" alt="letran-logo" class="logo" />
+            <h1>L KOLEHIYO</h1>
         </div>
-        <form>
-          <input
-            type="button"
-            value="Back to Dashboard"
-            onclick="history.back()"
-          />
-        </form>
-      </div>
+        <ul>
+            <li>
+                <a href="studentinformation.html"><i class="fas fa-id-card"></i> Profile</a>
+            </li>
+            <li>
+                <a href="studentgrades.html"><i class="fas fa-file-upload"></i> Academic Performance</a>
+            </li>
+            <li>
+                <a href="studentevents.html"><i class="fas fa-calendar-alt"></i> School Events</a>
+            </li>
+            <li>
+                <a href="offices.html"><i class="fas fa-map-marker-alt"></i> Office Location</a>
+            </li>
+            <li>
+                <a href="studentfeedbackform.html"><i class="fa fa-comments"></i> Feedback/Concerns</a>
+            </li>
+            <li>
+                <a href="studentannouncements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+            </li>
+            <li>
+                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
+    <section>
+        <div class="card1">
+            <div class="card">
+                <div class="right-container">
+                    <h3 class="gradienttext">Student Personal Information</h3>
+                    <table id="studentinformation-table">
+                        <tr>
+                            <td>Name :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>LRN :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Email :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Strand :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Grade Level :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Section :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Username :</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Password :</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <form>
+              
+            </form>
+        </div>
     </section>
 
     <script type="module" src="./studentinformation.js"></script>
-  </body>
+</body>
 </html>
