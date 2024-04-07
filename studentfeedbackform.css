@@ -5,12 +5,58 @@
 }
 
 body {
-    background: #002145; 
-    background: -webkit-linear-gradient(to right, #002145, #002145);  
-    background: linear-gradient(to right, #000, #002145);     
+  background: url('background-image.jpg') no-repeat center center fixed; /* Replace 'background-image.jpg' with your image path */
+  background-size: cover;
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
-  height:100vh;
+  height: 100vh;
+  margin: 0;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  background-color: transparent;
+  color: white;
+  z-index: 1000;
+}
+
+.school-info {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+}
+
+.side-menu h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  padding: 15px;
+}
+
+ul li a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+ul li a i {
+  margin-right: 10px;
 }
 
 .panel-container {
@@ -25,8 +71,8 @@ body {
   text-align: center;
   padding: 100px;
   max-width: 500px;
-  color:white;
-  margin:10% auto 2% auto;
+  color: white;
+  margin: 10% auto 2% auto;
 }
 
 .panel-container strong {
@@ -72,4 +118,10 @@ form input[type="button"] {
 
 form input[type="button"]:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .side-menu {
+    width: 0;
+  }
 }

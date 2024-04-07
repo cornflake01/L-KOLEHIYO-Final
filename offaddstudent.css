@@ -69,3 +69,80 @@ h2 {
     border-color: #002145;
     box-shadow: 0 0 0 0.2rem rgba(0, 33, 69, 0.25);
 }
+
+/* Side menu styles */
+.side-menu {
+    background-color: #002145;
+    color: #fff;
+    width: 20%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-y: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    z-index: 1000; /* Ensure the side menu is above other content */
+}
+
+.side-menu:hover {
+    width: 20%;
+}
+
+.school-info {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 2px solid transparent;
+    transition: width 0.3s, border-bottom 0.3s;
+}
+
+.school-info:hover {
+    width: 100%;
+    border-bottom: 2px solid #fff;
+}
+
+.school-info h1 {
+    margin-left: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.logo {
+    width: 80px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+ul li {
+    flex-grow: 1;
+}
+
+ul li a {
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
+
+ul li a:hover {
+    background-color: #003669;
+}
+
+ul li a i {
+    font-size: 32px;
+    margin-right: 20px;
+}

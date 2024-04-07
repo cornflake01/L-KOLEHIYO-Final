@@ -22,12 +22,22 @@
             margin-top: 30px;
         }
 
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
 
         th, td {
@@ -85,39 +95,155 @@
         .back-btn input[type="button"]:hover {
             background-color: #00172a;
         }
+
+        /* Side menu styles */
+        .side-menu {
+            background-color: #002145;
+            color: #fff;
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            z-index: 1000;
+        }
+
+        .side-menu:hover {
+            width: 250px;
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid transparent;
+            transition: width 0.3s, border-bottom 0.3s;
+        }
+
+        .school-info:hover {
+            width: 100%;
+            border-bottom: 2px solid #fff;
+        }
+
+        .school-info h1 {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .logo {
+            width: 80px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul li {
+            flex-grow: 1;
+        }
+
+        ul li a {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            background-color: #003669;
+        }
+
+        ul li a i {
+            font-size: 32px;
+            margin-right: 20px;
+        }
+
+        /* Card style */
+        .card {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+<div class="side-menu">
+    <div class="school-info">
+        <img src="./img/maltese_cross.png" alt="letran-logo" class="logo" />
+        <h1>L KOLEHIYO</h1>
+    </div>
+    <ul>
+        <li>
+            <a href="addstudent.html"><i class="fas fa-id-card"></i> Add New Students</a>
+        </li>
+        <li>
+            <a href="uploadgrades.html"><i class="fas fa-file-upload"></i> Grades Upload</a>
+        </li>
+        <li>
+            <a href="events.html"><i class="fas fa-calendar-alt"></i> School Events</a>
+        </li>
+        <li>
+            <a href="feedbacks.html"><i class="fa fa-comments"></i> Feedback/Concerns</a>
+        </li>
+        <li>
+            <a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+        </li>
+        <li>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </li>
+    </ul>
+</div>
+
 <h1>L-KOLEHIYO Accepted Feedbacks</h1>
-<table id="acceptedFeedbackTable">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Rating</th>
-        <th>Description</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Table rows will be inserted here dynamically -->
-    </tbody>
-</table>
+<div class="card">
+    <table id="acceptedFeedbackTable" class="card">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Rating</th>
+            <th>Description</th>
+            <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Table rows will be inserted here dynamically -->
+        </tbody>
+    </table>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database-compat.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const firebaseConfig = {
-            apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
-            authDomain: "l-kolehiyo-capstone.firebaseapp.com",
-            databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
-            projectId: "l-kolehiyo-capstone",
-            storageBucket: "l-kolehiyo-capstone.appspot.com",
-            messagingSenderId: "1032233320347",
-            appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
-            measurementId: "G-D5R84EF8KY"
-        };
+  apiKey: "AIzaSyB-W9ZBwlkefbJjicz9Mw0OuUrWI6FHnWk",
+  authDomain: "l-kolehiyo-8b253.firebaseapp.com",
+  databaseURL: "https://l-kolehiyo-8b253-default-rtdb.firebaseio.com",
+  projectId: "l-kolehiyo-8b253",
+  storageBucket: "l-kolehiyo-8b253.appspot.com",
+  messagingSenderId: "289094522635",
+  appId: "1:289094522635:web:5db3616b0468d52888b40e",
+  measurementId: "G-P8QC5255QR"
+};
 
         // Initialize Firebase
         const firebaseApp = firebase.initializeApp(firebaseConfig);

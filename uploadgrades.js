@@ -13,19 +13,20 @@ import {
   get,
   child,
   update,
+  remove,
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
-  authDomain: "l-kolehiyo-capstone.firebaseapp.com",
-  databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
-  projectId: "l-kolehiyo-capstone",
-  storageBucket: "l-kolehiyo-capstone.appspot.com",
-  messagingSenderId: "1032233320347",
-  appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
-  measurementId: "G-D5R84EF8KY",
+  apiKey: "AIzaSyB-W9ZBwlkefbJjicz9Mw0OuUrWI6FHnWk",
+  authDomain: "l-kolehiyo-8b253.firebaseapp.com",
+  databaseURL: "https://l-kolehiyo-8b253-default-rtdb.firebaseio.com",
+  projectId: "l-kolehiyo-8b253",
+  storageBucket: "l-kolehiyo-8b253.appspot.com",
+  messagingSenderId: "289094522635",
+  appId: "1:289094522635:web:5db3616b0468d52888b40e",
+  measurementId: "G-P8QC5255QR",
 };
 
 // Initialize Firebase
@@ -33,6 +34,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase(app);
 const auth = getAuth();
+
 
 // Reference to the students in the database
 const gradesRef = ref(db, "grades");
@@ -64,9 +66,18 @@ function checkInputs() {
 }
 
 subjectSelect.addEventListener("change", checkInputs);
-semesterSelect.addEventListener("change", checkInputs);
-quarterSelect.addEventListener("change", checkInputs);
-gradeLevelSelect.addEventListener("change", checkInputs);
+semesterSelect.addEventListener("change", () => {
+  populateSubjectSelect();
+  checkInputs();
+});
+quarterSelect.addEventListener("change", () => {
+  populateSubjectSelect();
+  checkInputs();
+});
+gradeLevelSelect.addEventListener("change", () => {
+  populateSubjectSelect();
+  checkInputs();
+});
 strandSelect.addEventListener("change", () => {
   populateSubjectSelect();
   checkInputs();
@@ -535,7 +546,7 @@ function changeSubjectValue(grade, semester, subject, newValue) {
 get(gradesRef).then((snapshot) => {
   if (snapshot.exists()) {
     // Itong remove, i clear niya yung mga data sa 'grades"
-    // remove(gradesRef, "grades");
+    //remove(gradesRef, "grades");
     console.log(snapshot.val());
   } else {
     console.log("NO data found");
@@ -564,44 +575,45 @@ function extractUniqueSubjects(subjectsObject) {
 
 // Render all unique subjects in the subject dropdown
 function populateSubjectSelect() {
+  const isGrade11 = gradeLevelSelect.value === "11" ? true : false;
+  const gradeLvl = isGrade11 ? "grade11" : "grade12";
+  const isFirstSem = semesterSelect.value === "1" ? true : false;
+  const sem = isFirstSem ? "firstSem" : "secondSem";
+
   let subjects = [];
   // Clear existing options
   subjectSelect.innerHTML = "<option selected disabled hidden>SUBJECT</option>";
 
   switch (strandSelect.value) {
     case "ICT":
-      subjects = ICT_SUBJECTS;
+      subjects = Object.keys(ICT_SUBJECTS[gradeLvl][sem]);
       break;
     case "ABM":
-      subjects = ABM_SUBJECTS;
+      subjects = Object.keys(ABM_SUBJECTS[gradeLvl][sem]);
       break;
     case "HUMSS":
-      subjects = HUMSS_SUBJECTS;
+      subjects = Object.keys(HUMSS_SUBJECTS[gradeLvl][sem]);
       break;
     case "STEM":
-      subjects = STEM_SUBJECTS;
+      subjects = Object.keys(STEM_SUBJECTS[gradeLvl][sem]);
       break;
 
     default:
       break;
   }
 
-  const uniqueSubjectsArray = extractUniqueSubjects(subjects);
-
-  uniqueSubjectsArray.forEach((subject, index) => {
+  subjects.forEach((subject, index) => {
     const option = document.createElement("option");
     option.value = subject;
     option.textContent = subject;
     subjectSelect.appendChild(option);
   });
-
-  console.log(subjects);
 }
 
 function populateSectionSelect() {
   let sections = ["St Dominic", "St John", "St Peter"];
   // Clear existing options
-  sectionSelect.innerHTML = "<option selected disabled hidden>SUBJECT</option>";
+  sectionSelect.innerHTML = "<option selected disabled hidden>SECTION</option>";
 
   sections.forEach((section, index) => {
     const option = document.createElement("option");
@@ -612,3 +624,46 @@ function populateSectionSelect() {
 }
 
 populateSectionSelect();
+
+// Function to display a pop-up message
+function displayPopup(message) {
+  // Get the modal element
+  const modal = document.getElementById("popupModal");
+
+  // Get the message element inside the modal
+  const messageElement = modal.querySelector(".modal-body p");
+
+  // Set the message content
+  messageElement.textContent = message;
+
+  // Show the modal
+  const modalInstance = new bootstrap.Modal(modal);
+  modalInstance.show();
+}
+
+// Function to handle file upload
+function handleFileUpload(file) {
+  // Simulate file upload to Firebase (replace this with your Firebase upload logic)
+  setTimeout(() => {
+    // Display pop-up
+    displayPopup("Grades successfully uploaded");
+
+    // Reset the page after 2 seconds (adjust delay as needed)
+    setTimeout(() => {
+      location.reload(); // Reload the page
+    }, 2000);
+  }, 2000); // Simulating 2 seconds delay for the upload process
+}
+
+
+// Event listener for UPLOAD button click
+document.getElementById("upload-btn").addEventListener("click", function () {
+  // Get the selected file
+  const fileInput = document.getElementById("fileUpload");
+  const file = fileInput.files[0];
+
+  if (file) {
+    // Call handleFileUpload function
+    handleFileUpload(file);
+  }
+});

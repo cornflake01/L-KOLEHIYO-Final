@@ -13,15 +13,17 @@ import {
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
-  authDomain: "l-kolehiyo-capstone.firebaseapp.com",
-  databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
-  projectId: "l-kolehiyo-capstone",
-  storageBucket: "l-kolehiyo-capstone.appspot.com",
-  messagingSenderId: "1032233320347",
-  appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
-  measurementId: "G-D5R84EF8KY",
+  apiKey: "AIzaSyB-W9ZBwlkefbJjicz9Mw0OuUrWI6FHnWk",
+  authDomain: "l-kolehiyo-8b253.firebaseapp.com",
+  databaseURL: "https://l-kolehiyo-8b253-default-rtdb.firebaseio.com",
+  projectId: "l-kolehiyo-8b253",
+  storageBucket: "l-kolehiyo-8b253.appspot.com",
+  messagingSenderId: "289094522635",
+  appId: "1:289094522635:web:5db3616b0468d52888b40e",
+  measurementId: "G-P8QC5255QR",
 };
+
+console.log("hi");
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -86,8 +88,8 @@ function renderStudentInfo(user) {
         <td>Section :</td>
         <td>${user.section}</td>
       </tr>
-      <tr>
-        <td>Username :</td>
+      <avaaaatr>
+        <td>Username :</tda>a
         <td>${user.username}</td>
       </tr>
       <tr>

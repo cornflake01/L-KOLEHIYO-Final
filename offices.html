@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Office Information</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+          crossorigin="anonymous"/>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            background: #002145;
+            background: -webkit-linear-gradient(to right, #002145, #002145);
+            background: linear-gradient(to right, #000, #002145);
         }
 
         .container {
@@ -20,6 +27,8 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            text-align: center;
+            margin-left: 20%; /* Adjusted to accommodate the side menu */
         }
 
         .box {
@@ -89,9 +98,119 @@
             margin-bottom: 10px;
             color: #002145;
         }
+
+        /* Side menu styles */
+        .side-menu {
+            background-color: #002145;
+            color: #fff;
+            height: 100vh;
+            width: 20%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            z-index: 1000; /* Ensure the side menu is above other content */
+        }
+
+        .side-menu:hover {
+            width: 20%;
+        }
+
+        .school-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid transparent;
+            transition: width 0.3s, border-bottom 0.3s;
+        }
+
+        .school-info:hover {
+            width: 100%;
+            border-bottom: 2px solid #fff;
+        }
+
+        .school-info h1 {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .logo {
+            width: 80px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul li {
+            flex-grow: 1;
+        }
+
+        ul li a {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            background-color: #003669;
+        }
+
+        ul li a i {
+            font-size: 32px;
+            margin-right: 20px;
+        }
     </style>
 </head>
+
 <body>
+    <!-- Side Menu -->
+    <div class="side-menu">
+        <div class="school-info">
+            <img src="./img/maltese_cross.png" alt="letran-logo" class="logo" />
+            <h1>L KOLEHIYO</h1>
+        </div>
+        <ul>
+            <li>
+                <a href="studentinformation.html"><i class="fas fa-id-card"></i> Profile</a>
+            </li>
+            <li>
+                <a href="studentgrades.html"><i class="fas fa-file-upload"></i> Academic Performance</a>
+            </li>
+            <li>
+                <a href="studentevents.html"><i class="fas fa-calendar-alt"></i> School Events</a>
+            </li>
+            <li>
+                <a href="offices.html"><i class="fas fa-map-marker-alt"></i> Office Location</a>
+            </li>
+            <li>
+                <a href="studentfeedbackform.html"><i class="fa fa-comments"></i> Feedback/Concerns</a>
+            </li>
+            <li>
+                <a href="studentannouncements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+            </li>
+            <li>
+                <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </li>
+        </ul>
+    </div>
+
     <div class="container">
         <div class="box" onclick="showOfficeInfo('Rector\'s Office')">Rector's Office</div>
         <div class="box" onclick="showOfficeInfo('Research and Scholarship')">Research and Scholarship</div>
@@ -110,11 +229,12 @@
 
     <div class="office-info" id="officeInfo">
         <div class="office-details">
-            <span class="close-btn" onclick="closeOfficeInfo()">&times;</span>
+            <span class="close-btn" onclick="hideOfficeInfo()">&times;</span>
             <h2 class="office-title" id="officeTitle"></h2>
             <img class="office-image" id="officeImage" src="" alt="Office Image">
             <p id="personInCharge"></p>
             <p id="directions"></p>
+            <div id="additionalImages"></div>
         </div>
     </div>
 
@@ -126,14 +246,69 @@
             // For now, using static data
             const officeDetails = {
                 "Rector's Office": {
-                    image: "rectors_office.jpg",
+                    image: "img/rector1.png",
+                    personInCharge: "John Doe",
+                    directions: " Beside Board Room at St. Vicenete Liem de la Paz Building 3rd Floor"
+                },
+                "Research and Scholarship": {
+                    image: "img/research1.png",
+                    personInCharge: "Jane Smith",
+                    directions: "Beside Registrars Office at Our Lady of Manaoag Building 1st Floor"
+                },
+                "Vice President for Academics": {
+                    image: "img/rector1.png",
+                    personInCharge: "John Doe",
+                    directions: "Beside Program Head Office at Our Lady of Manaoag Building 1st Floor"
+                },
+                "Vice President for REMI": {
+                    image: "img/remi1.png",
+                    personInCharge: "Jane Smith",
+                    directions: "#102 St. Vincente Liem de la Paz Building 1st Floor"
+                },
+                "Vice President for Administration": {
+                    image: "img/rector1.png",
+                    personInCharge: "John Doe",
+                    directions: " #101 St. Vincente Liem de la Paz Building 1st Floor"
+                },
+                "Vice President for Finance": {
+                    image: "img/research1.png",
+                    personInCharge: "Jane Smith",
+                    directions: "#103 St. Vicenete Liem de la Paz Building 1st Floor"
+                },
+                "Academic Office": {
+                    image: "img/rector1.png",
+                    personInCharge: "John Doe",
+                    directions: "#103 St. Vicenete Liem de la Paz Building 1st Floor"
+                },
+                "Principal\'s Offices": {
+                    image: "img/research1.png",
+                    personInCharge: "Jane Smith",
+                    directions: "#103 St. Vicenete Liem de la Paz Building 1st Floor"
+                },
+                "Program Head": {
+                    image: "img/proghead.png",
+                    personInCharge: "John Doe",
+                    directions: " Beside Vice Presidents Office at Our Lady of Manaoag Building 1st Floor"
+                },
+                "Faculty Office": {
+                    image: "img/rector1.png",
+                    personInCharge: "John Doe",
+                    directions: "#104 St. Vincente Liem de la Paz Building 1st Floor"
+                },
+                "Guidance Office": {
+                    image: "img/guidoff.png",
                     personInCharge: "John Doe",
                     directions: "Located on the 3rd floor, East Wing."
                 },
-                "Research and Scholarship": {
-                    image: "research_office.jpg",
-                    personInCharge: "Jane Smith",
-                    directions: "Located in the Main Building, Room 101."
+                "Clinic": {
+                    image: "img/clinic.png",
+                    personInCharge: "John Doe",
+                    directions: "Located on the 3rd floor, East Wing."
+                },
+                "Computer Laboratory": {
+                    image: "img/comlab.png",
+                    personInCharge: "John Doe",
+                    directions: "Beside Learning Resource Center at Our Lady of Manaoag Building 3rd Floor"
                 },
                 // Add more offices as needed
             };
@@ -145,10 +320,19 @@
             document.getElementById('officeInfo').style.display = 'block';
         }
 
-        function closeOfficeInfo() {
-            // Hide office information
-            document.getElementById('officeInfo').style.display = 'none';
+        function hideOfficeInfo() {
+            var officeInfo = document.getElementById("officeInfo");
+            officeInfo.style.display = "none";
         }
+
+        // Close office information popup when clicking outside of it
+        window.onclick = function (event) {
+            var officeInfo = document.getElementById("officeInfo");
+            if (event.target == officeInfo) {
+                officeInfo.style.display = "none";
+            }
+        };
     </script>
 </body>
+
 </html>

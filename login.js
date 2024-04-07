@@ -14,14 +14,14 @@ import {
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
-  authDomain: "l-kolehiyo-capstone.firebaseapp.com",
-  databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
-  projectId: "l-kolehiyo-capstone",
-  storageBucket: "l-kolehiyo-capstone.appspot.com",
-  messagingSenderId: "1032233320347",
-  appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
-  measurementId: "G-D5R84EF8KY",
+  apiKey: "AIzaSyB-W9ZBwlkefbJjicz9Mw0OuUrWI6FHnWk",
+  authDomain: "l-kolehiyo-8b253.firebaseapp.com",
+  databaseURL: "https://l-kolehiyo-8b253-default-rtdb.firebaseio.com",
+  projectId: "l-kolehiyo-8b253",
+  storageBucket: "l-kolehiyo-8b253.appspot.com",
+  messagingSenderId: "289094522635",
+  appId: "1:289094522635:web:5db3616b0468d52888b40e",
+  measurementId: "G-P8QC5255QR"
 };
 
 // Initialize Firebase
@@ -62,18 +62,39 @@ const loginForm = document.getElementById("loginForm");
 document.getElementById("login-btn").onclick = () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const userType = document.getElementById("user-type").value; // Get the selected user type
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Login successful, redirect to dashboard
-      window.location.href = "studentdashboard.html";
-    })
-    .catch((error) => {
-      console.log(error);
-      // Handle login error
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.error(errorMessage);
-      // Display error message to user
-    });
+  if (userType === "student") {
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Login successful, redirect student to student dashboard
+        window.location.href = "studentdashboard.html";
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle login error
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorMessage);
+        // Display error message to user
+      });
+  } else if (userType === "admin") {
+    // Use admin credentials for admin login
+    const adminEmail = "admin@lkolehiyo.com"; // Update with actual admin email
+    const adminPassword = "admin1234"; // Update with actual admin password
+
+    signInWithEmailAndPassword(auth, adminEmail, adminPassword)
+      .then((userCredential) => {
+        // Login successful, redirect admin to admin dashboard
+        window.location.href = "dashboard.html";
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle login error
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorMessage);
+        // Display error message to user
+      });
+  }
 };

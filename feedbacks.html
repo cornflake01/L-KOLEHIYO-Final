@@ -4,143 +4,205 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>L-KOLEHIYO Student Feedback</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e410dd328b.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            color: #002145;
-            margin: 0;
-            padding: 0;
+            background-color: #f4f4f4;
         }
 
-        h1 {
-            text-align: center;
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .announcement-title {
             color: #002145;
-            margin-top: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
 
         th, td {
-            padding: 12px;
+            padding: 8px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
 
         th {
-            background-color: #f2f2f2;
-            font-weight: bold;
-            color: #002145;
+            background-color: #002145;
+            color: white;
         }
 
-        th:first-child,
-        td:first-child {
-            width: 20%;
+        .btn-custom {
+            background-color: #002145;
+            color: white;
+            margin-right: 5px;
         }
 
-        th:nth-child(2),
-        td:nth-child(2),
-        th:nth-child(3),
-        td:nth-child(3),
-        th:nth-child(4),
-        td:nth-child(4) {
-            width: 20%;
+        .btn-custom:hover {
+            background-color: #002145;
+            color: white;
         }
 
-        th:nth-child(5),
-        td:nth-child(5) {
-            width: 20%;
-        }
-
-        script {
-            margin-top: 20px;
-        }
-
-        .back-btn {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .back-btn input[type="button"] {
+        /* Side menu styles */
+        .side-menu {
             background-color: #002145;
             color: #fff;
-            border: none;
-            border-radius: 5px;
-            padding: 12px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
+            width: 20%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: width 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            z-index: 1000; /* Ensure the side menu is above other content */
         }
 
-        .back-btn input[type="button"]:hover {
-            background-color: #00172a;
+        .side-menu:hover {
+            width: 20%;
         }
 
-        .action-btns button {
-            margin: 0 5px;
-            padding: 8px 15px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            transition: background-color 0.3s ease;
+        .school-info {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid transparent;
+            transition: width 0.3s, border-bottom 0.3s;
         }
 
-        .action-btns button:hover {
-            background-color: #45a049;
+        .school-info:hover {
+            width: 100%;
+            border-bottom: 2px solid #fff;
         }
 
-        .action-btns button.ignore {
-            background-color: #f44336;
+        .school-info h1 {
+            margin-left: 10px;
+            font-size: 18px;
+            color: #fff;
         }
 
-        .action-btns button.ignore:hover {
-            background-color: #d32f2f;
+        .logo {
+            width: 80px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        ul li {
+            flex-grow: 1;
+        }
+
+        ul li a {
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 18px;
+        }
+
+        ul li a:hover {
+            background-color: #003669;
+        }
+
+        ul li a i {
+            font-size: 32px;
+            margin-right: 20px;
         }
     </style>
 </head>
 <body>
-<h1>L-KOLEHIYO Student Feedbacks</h1>
-<table id="feedbackTable">
-    <thead>
-    <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Rating</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <!-- Table rows will be inserted here dynamically -->
-    </tbody>
-</table>
+<div class="side-menu">
+    <div class="school-info">
+        <img src="./img/maltese_cross.png" alt="letran-logo" class="logo" />
+        <h1>L KOLEHIYO</h1>
+    </div>
+    <ul>
+        <li>
+            <a href="addstudent.html"><i class="fas fa-id-card"></i> Add New Students</a>
+        </li>
+        <li>
+            <a href="studentinfo.html"><i class="fas fa-id-card"></i> Student Information</a>
+          </li>
+        <li>
+            <a href="uploadgrades.html"><i class="fas fa-file-upload"></i> Grades Upload</a>
+        </li>
+        <li>
+            <a href="events.html"><i class="fas fa-calendar-alt"></i> School Events</a>
+        </li>
+        <li>
+            <a href="acceptedfeedback.html"><i class="fa fa-comments"></i> Feedback/Concerns</a>
+        </li>
+        <li>
+            <a href="announcements.html"><i class="fas fa-bullhorn"></i> Announcements</a>
+        </li>
+        <li>
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </li>
+    </ul>
+</div>
+
+<div class="container">
+    <h1 class="announcement-title">L KOLEHIYO Student Feedbacks</h1>
+    <div class="card">
+        <table id="feedbackTable">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Rating</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Table rows will be inserted here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="back-btn">
+        <input type="button" value="Accepted Feedbacks" onclick="window.location.href = 'acceptedfeedback.html'">
+    </div>
+</div>
 
 <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.4.0/firebase-database-compat.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const firebaseConfig = {
-            apiKey: "AIzaSyA4SI2yXymjL4cwtVvKtCxGTQOeMvU968w",
-            authDomain: "l-kolehiyo-capstone.firebaseapp.com",
-            databaseURL: "https://l-kolehiyo-capstone-default-rtdb.firebaseio.com",
-            projectId: "l-kolehiyo-capstone",
-            storageBucket: "l-kolehiyo-capstone.appspot.com",
-            messagingSenderId: "1032233320347",
-            appId: "1:1032233320347:web:109c19d37aec6d0364eb3e",
-            measurementId: "G-D5R84EF8KY"
+            apiKey: "AIzaSyB-W9ZBwlkefbJjicz9Mw0OuUrWI6FHnWk",
+            authDomain: "l-kolehiyo-8b253.firebaseapp.com",
+            databaseURL: "https://l-kolehiyo-8b253-default-rtdb.firebaseio.com",
+            projectId: "l-kolehiyo-8b253",
+            storageBucket: "l-kolehiyo-8b253.appspot.com",
+            messagingSenderId: "289094522635",
+            appId: "1:289094522635:web:5db3616b0468d52888b40e",
+            measurementId: "G-P8QC5255QR"
         };
 
         // Initialize Firebase
@@ -152,37 +214,45 @@
         database.ref('feedbacks').once('value', function (snapshot) {
             snapshot.forEach(function (childSnapshot) {
                 const childData = childSnapshot.val();
+                const key = childSnapshot.key; // Get the key of the feedback data
+
                 const row = feedbackTable.insertRow();
                 row.insertCell(0).textContent = childData.name || '';
-                row.insertCell(1).textContent = childData.email || ''; // Make sure email field is present in the data
+                row.insertCell(1).textContent = childData.email || '';
                 row.insertCell(2).textContent = childData.rating || '';
                 row.insertCell(3).textContent = childData.description || '';
                 row.insertCell(4).textContent = childData.timestamp ? new Date(childData.timestamp).toLocaleString() : '';
+
                 const actionCell = row.insertCell(5);
                 const acceptButton = document.createElement('button');
                 acceptButton.textContent = 'Accept';
                 acceptButton.classList.add('accept');
                 acceptButton.onclick = function() {
-                    // Add logic to accept the feedback
+                    // Move the feedback to accepted_feedbacks node
+                    const acceptedRef = database.ref('accepted_feedbacks').push();
+                    acceptedRef.set(childData); // Copy the data to accepted_feedbacks
+                    // Remove the feedback from feedbacks node
+                    database.ref('feedbacks/' + key).remove();
+                    // Remove the row from the table
+                    feedbackTable.deleteRow(row.rowIndex);
                 };
+
                 const ignoreButton = document.createElement('button');
                 ignoreButton.textContent = 'Ignore';
                 ignoreButton.classList.add('ignore');
                 ignoreButton.onclick = function() {
-                    // Add logic to ignore the feedback
+                    // Remove the feedback from feedbacks node
+                    database.ref('feedbacks/' + key).remove();
+                    // Remove the row from the table
+                    feedbackTable.deleteRow(row.rowIndex);
                 };
+
                 actionCell.appendChild(acceptButton);
                 actionCell.appendChild(ignoreButton);
             });
         });
     });
 </script>
-
-<div class="back-btn">
-    <form>
-        <input type="button" value="Back to Dashboard" onclick="history.back()">
-    </form>
-</div>
 
 </body>
 </html>
